@@ -1033,6 +1033,7 @@ GameObject:
   - component: {fileID: 1186166491}
   - component: {fileID: 1186166490}
   - component: {fileID: 1186166489}
+  - component: {fileID: 1186166495}
   - component: {fileID: 1186166493}
   - component: {fileID: 1186166494}
   m_Layer: 0
@@ -1211,6 +1212,20 @@ MonoBehaviour:
   interactionDistance: 1
   interactionText: {fileID: 1133446454}
   cam: {fileID: 599852832}
+--- !u!114 &1186166495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1186166488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1dd9d7f0227ec4249901bc570092a12b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxSanity: 100
+  sanityDrainRate: 1
 --- !u!1 &1227515830
 GameObject:
   m_ObjectHideFlags: 3

@@ -6,6 +6,7 @@ public class PlayerStatus : MonoBehaviour
 {
     public float maxSanity = 100;
     public int sanityDrainRate;
+    private int savedSanityDrainLvl;
 
     private float sanity;
 
@@ -16,6 +17,8 @@ public class PlayerStatus : MonoBehaviour
 
     private void FixedUpdate() 
     {
+        if(sanityDrainRate == 0) return;
+
         if(sanity < 0)
         {
             Debug.Log("i died");
@@ -23,5 +26,16 @@ public class PlayerStatus : MonoBehaviour
         }
 
         sanity -= sanityDrainRate * Time.deltaTime;
+    }
+
+    public void LoadSanityLevel()
+    {
+        sanityDrainRate = savedSanityDrainLvl;
+    }
+
+    public void StopSanityDrain()
+    {
+        savedSanityDrainLvl = sanityDrainRate;
+        sanityDrainRate = 0;
     }
 }

@@ -7,14 +7,7 @@ using TMPro;
 
 public class PlayerInteraction : MonoBehaviour
 {
-    public float interactionDistance;
-
     public TextMeshProUGUI interactionText;
-
-    public Camera cam;
-
-    int mapLayer = 7;
-    int btnLayer = 6;
 
     private GameObject currentObj;
     private bool successfulHit;
@@ -31,6 +24,7 @@ public class PlayerInteraction : MonoBehaviour
         {
             var interactable = currentObj.GetComponent<Interactable>();
             var objCheck = currentObj.gameObject;
+            Debug.Log(objCheck.name);
         
             if (interactable != null)
             {

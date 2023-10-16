@@ -29,10 +29,15 @@ public class SanityBottleButton : MonoBehaviour
         }
     }
 
-    private void ConsumeSanityBottle()
+    public void ConsumeSanityBottle()
     {
-        //Increase Sanity gague
-        throw new NotImplementedException();
+        invSystem.GetComponent<PlayerStatus>().UseSanityBottle();
+    }
+
+    public void ConsumeHealthBottle()
+    {
+        //ON HOLD
+        invSystem.GetComponent<PlayerStatus>().UseHealthBottle();
     }
 
     public void UseLightShard()
@@ -53,6 +58,7 @@ public class SanityBottleButton : MonoBehaviour
     private void ConsumeLightShard()
     {
         //Increase Level of light dude
+        //SINGLETON FIRST
         throw new NotImplementedException();
     }
 }

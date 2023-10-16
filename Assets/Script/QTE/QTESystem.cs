@@ -11,6 +11,7 @@ public class QTESystem : MonoBehaviour
         w,a,s,d
     }
 
+    public GameObject itemPrefab;
     public float cdQteTimeMin, cdQteTimeMax;
     public float QteTime = 2f;
     public bool isFailedQte;
@@ -22,8 +23,6 @@ public class QTESystem : MonoBehaviour
     private void Start() 
     {
         QteTimeleft = QteTime;
-
-        // CastRandomKeys();
     }
 
     private void Update() 
@@ -34,8 +33,7 @@ public class QTESystem : MonoBehaviour
         {
             Debug.Log("Failed to pressed QTE");
 
-            //Decrease health of player
-
+            player.GetComponent<PlayerStatus>().DecreaseHealth();
 
             isFailedQte = true;
             isStartedQte = false;
@@ -49,7 +47,7 @@ public class QTESystem : MonoBehaviour
         {
             Debug.Log("Successfully to pressed QTE");
 
-            //Spawn Item
+            Instantiate(itemPrefab,this.gameObject.transform.position, Quaternion.identity);
 
             isFailedQte = false;
             isStartedQte = false;
@@ -76,5 +74,12 @@ public class QTESystem : MonoBehaviour
         isStartedQte = true;
     }
 
-    
+    private GameObject player;
+
+    private void OnTriggerStay2D(Collider2D _col) 
+    {
+        if(_col.gameObject.tag != "Player") return;
+        
+        player = _col.gameObject;
+    }
 }

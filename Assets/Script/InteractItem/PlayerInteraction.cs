@@ -23,8 +23,8 @@ public class PlayerInteraction : MonoBehaviour
         if(isInZone)
         {
             var interactable = currentObj.GetComponent<Interactable>();
-            var objCheck = currentObj.gameObject;
-            Debug.Log(objCheck.name);
+            // var objCheck = currentObj.gameObject;
+            // Debug.Log(objCheck.name);
         
             if (interactable != null)
             {

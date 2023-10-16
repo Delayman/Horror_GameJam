@@ -25,5 +25,6 @@ public class SearchItem : Interactable
     private void Activate()
     {
         qTESystem.CastRandomKeys();
+        this.gameObject.GetComponent<BoxCollider2D>().enabled = false;
     }
 }

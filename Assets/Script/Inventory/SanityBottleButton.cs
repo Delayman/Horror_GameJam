@@ -58,7 +58,6 @@ public class SanityBottleButton : MonoBehaviour
     private void ConsumeLightShard()
     {
         //Increase Level of light dude
-        //SINGLETON FIRST
-        throw new NotImplementedException();
+        GameManager.instance.IncreaseSoulShard(1);
     }
 }

@@ -16,6 +16,9 @@ public class PlayerStatus : MonoBehaviour
     {
         sanity = maxSanity;
         health = maxHealth;
+
+        if(savedSanityDrainLvl == 0) 
+            savedSanityDrainLvl = sanityDrainRate;
     }
 
     private void FixedUpdate() 
@@ -38,6 +41,8 @@ public class PlayerStatus : MonoBehaviour
 
     public void StopSanityDrain()
     {
+        if(sanityDrainRate == 0) return;
+
         savedSanityDrainLvl = sanityDrainRate;
         sanityDrainRate = 0;
     }

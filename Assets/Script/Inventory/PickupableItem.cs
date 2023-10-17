@@ -9,9 +9,9 @@ public class PickupableItem : Interactable
     private GameObject player;
     private InventorySystem invSystem;
 
-    public override string GetDescription()
+    public override bool GetInteractBool()
     {
-        return "E";
+        return true;
     }
 
     public override void Interact()

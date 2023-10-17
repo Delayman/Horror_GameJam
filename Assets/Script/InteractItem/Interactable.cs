@@ -14,7 +14,7 @@ public abstract class Interactable : MonoBehaviour
 
     public InteractionType interactionType;
 
-    public abstract string GetDescription();
+    public abstract bool GetInteractBool();
     public abstract void Interact();
 
     public void IncreaseHoldTime() => holdTime += Time.deltaTime;

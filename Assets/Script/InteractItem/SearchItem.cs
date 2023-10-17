@@ -12,9 +12,9 @@ public class SearchItem : Interactable
         qTESystem = GetComponent<QTESystem>();
     }
 
-    public override string GetDescription()
+    public override bool GetInteractBool()
     {
-        return "E";
+        return true;
     }
 
     public override void Interact()

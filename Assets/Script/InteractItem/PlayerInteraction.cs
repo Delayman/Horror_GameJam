@@ -7,7 +7,7 @@ using TMPro;
 
 public class PlayerInteraction : MonoBehaviour
 {
-    public TextMeshProUGUI interactionText;
+    public GameObject interactionIcon;
 
     private GameObject currentObj;
     private bool successfulHit;
@@ -15,7 +15,7 @@ public class PlayerInteraction : MonoBehaviour
 
     private void Start()
     {
-        interactionText = GameObject.FindGameObjectWithTag("InteractTextField").GetComponent<TextMeshProUGUI>();
+        interactionIcon = GameObject.FindGameObjectWithTag("InteractTextField");
     }
 
     private void Update() 
@@ -28,7 +28,7 @@ public class PlayerInteraction : MonoBehaviour
         
             if (interactable != null)
             {
-                interactionText.text = interactable.GetDescription();
+                interactionIcon.SetActive(interactable.GetInteractBool());
                 HandleInteraction(interactable);
                 successfulHit = true;
             }
@@ -36,7 +36,7 @@ public class PlayerInteraction : MonoBehaviour
         {
             successfulHit = false;
 
-            if (!successfulHit && interactionText != null) interactionText.text = "";
+            if (!successfulHit && interactionIcon != null) interactionIcon.SetActive(false);
         }
     }
 

@@ -33,13 +33,7 @@ public class SanityBottleButton : MonoBehaviour
     {
         invSystem.GetComponent<PlayerStatus>().UseSanityBottle();
     }
-
-    public void ConsumeHealthBottle()
-    {
-        //ON HOLD
-        invSystem.GetComponent<PlayerStatus>().UseHealthBottle();
-    }
-
+    
     public void UseLightShard()
     {
         ConsumeLightShard();

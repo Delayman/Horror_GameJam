@@ -35,7 +35,7 @@ public class QTESystem : MonoBehaviour
         {
             // Debug.Log("Failed to pressed QTE");
             
-            player.GetComponent<PlayerStatus>().DecreaseHealth();
+            player.GetComponent<PlayerStatus>().DecreaseSanityOnFailed();
             player.GetComponent<PlayerStatus>().qteSlider.gameObject.SetActive(false);
 
             HideQTEKey();

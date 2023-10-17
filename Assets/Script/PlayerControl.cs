@@ -57,7 +57,7 @@ public class PlayerControl : MonoBehaviour
             }else
             {
                 PlayerCellingSpeed = savedCellingSpeed;
-                rb.velocity = new Vector2(-20f,rb.velocity.y);
+                rb.velocity = new Vector2(-19f,rb.velocity.y);
 
                 animator.SetBool("isRun", false);
                 return;
@@ -82,7 +82,7 @@ public class PlayerControl : MonoBehaviour
             }else
             {
                 PlayerCellingSpeed = savedCellingSpeed;
-                rb.velocity = new Vector2(20f,rb.velocity.y);
+                rb.velocity = new Vector2(19f,rb.velocity.y);
 
                 animator.SetBool("isRun", false);
                 return;

@@ -63,19 +63,9 @@ public class PlayerStatus : MonoBehaviour
         sanityDrainRate = 0;
     }
 
-    public void DecreaseHealth()
+    public void DecreaseSanityOnFailed()
     {
-        health -= 5f;
-    }
-
-    public void UseHealthBottle()
-    {
-        //ON HOLD
-
-        health += 25f;
-
-        if(health > 100f)
-            health = 100f;
+        sanity -= 5f;
     }
 
     public void UseSanityBottle()

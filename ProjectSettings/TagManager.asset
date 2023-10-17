@@ -6,6 +6,7 @@ TagManager:
   tags:
   - InteractTextField
   - InteractArea
+  - QTECountDown
   layers:
   - Default
   - TransparentFX

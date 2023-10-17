@@ -8,6 +8,7 @@ using TMPro;
 public class PlayerInteraction : MonoBehaviour
 {
     public GameObject interactionIcon;
+    public SpriteRenderer[] keyIconForQTE;
 
     private GameObject currentObj;
     private bool successfulHit;
@@ -27,7 +28,7 @@ public class PlayerInteraction : MonoBehaviour
             // Debug.Log(objCheck.name);
         
             if (interactable != null)
-            {
+            {                
                 interactionIcon.SetActive(interactable.GetInteractBool());
                 HandleInteraction(interactable);
                 successfulHit = true;
@@ -35,8 +36,8 @@ public class PlayerInteraction : MonoBehaviour
         }else
         {
             successfulHit = false;
-
-            if (!successfulHit && interactionIcon != null) interactionIcon.SetActive(false);
+            var playerObj = GetComponent<PlayerStatus>();
+            if (!successfulHit && interactionIcon != null && !playerObj.IsbetweenQte) interactionIcon.SetActive(false);
         }
     }
 

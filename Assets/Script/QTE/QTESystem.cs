@@ -26,33 +26,43 @@ public class QTESystem : MonoBehaviour
     }
 
     private void Update() 
-    {
+    { 
         if(!isStartedQte) return;
+
+        player.GetComponent<PlayerStatus>().qteSlider.gameObject.SetActive(true);
 
         if(QteTimeleft < 0)
         {
-            Debug.Log("Failed to pressed QTE");
-
+            // Debug.Log("Failed to pressed QTE");
+            
             player.GetComponent<PlayerStatus>().DecreaseHealth();
+            player.GetComponent<PlayerStatus>().qteSlider.gameObject.SetActive(false);
+
+            HideQTEKey();
 
             isFailedQte = true;
             isStartedQte = false;
-            QteTimeleft = QteTime;
+            QteTimeleft = QteTime; 
             return;
         }
 
-        QteTimeleft -= Time.deltaTime;
-
         if(Input.GetKeyDown(keyForQTE))
         {
-            Debug.Log("Successfully to pressed QTE");
+            // Debug.Log("Successfully to pressed QTE");
 
             Instantiate(itemPrefab,this.gameObject.transform.position, Quaternion.identity);
+            player.GetComponent<PlayerStatus>().qteSlider.gameObject.SetActive(false);
+
+            HideQTEKey();
 
             isFailedQte = false;
             isStartedQte = false;
             QteTimeleft = QteTime;
         }
+
+        QteTimeleft -= Time.deltaTime;
+
+        player.GetComponent<PlayerStatus>().qteSlider.value = QteTimeleft;
     }
 
     public void CastRandomKeys()
@@ -69,9 +79,19 @@ public class QTESystem : MonoBehaviour
 
         yield return new WaitForSeconds(cdQteTime);
 
-        //ShowKey
-        Debug.Log($"Press : {keyForQTE}");
+        ShowQTEKey();
+        // Debug.Log($"Press : {keyForQTE}");
         isStartedQte = true;
+    }
+
+    private void ShowQTEKey()
+    {
+        player.GetComponent<PlayerStatus>().ManageQTESprite(keyForQTE);
+    }
+
+    private void HideQTEKey()
+    {
+        player.GetComponent<PlayerStatus>().HideQTEButton();
     }
 
     private GameObject player;

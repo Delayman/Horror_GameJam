@@ -33,6 +33,7 @@ public class Teleporter : Interactable
     private void Teleport()
     {
         player.transform.position = warpPos1.transform.position;
+        player.GetComponent<PlayerControl>().enabled = true;
     }
 
     private void OnTriggerEnter2D(Collider2D _col) 

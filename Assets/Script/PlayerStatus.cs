@@ -7,7 +7,9 @@ public class PlayerStatus : MonoBehaviour
 {
     public float maxHealth = 100;
     public float maxSanity = 100;
+    public Slider sanitySlider;
     public float maxStamina = 100;
+    public Slider staminaSlider;
 
     public Slider qteSlider;
 
@@ -15,10 +17,11 @@ public class PlayerStatus : MonoBehaviour
     private int savedSanityDrainLvl;
 
     public bool IsbetweenQte;
+    public bool IsRunning;
 
     private float sanity;
     private float health;
-    private float stamina;
+    public float stamina;
     private PlayerInteraction playerInteract;
 
 
@@ -37,8 +40,24 @@ public class PlayerStatus : MonoBehaviour
             savedSanityDrainLvl = sanityDrainRate;
     }
 
+    private void Update() 
+    {
+        if(IsRunning)
+        {
+            stamina -= 10f * Time.deltaTime;
+        }else
+        {
+            if(stamina >= 100) return;
+
+            stamina += 5f * Time.deltaTime;
+        }
+    }
+
     private void FixedUpdate() 
     {
+        sanitySlider.value = sanity;
+        staminaSlider.value = stamina;
+
         if(sanityDrainRate == 0) return;
 
         if(sanity < 0)

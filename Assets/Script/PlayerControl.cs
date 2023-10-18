@@ -51,6 +51,7 @@ public class PlayerControl : MonoBehaviour
             {
                 rb.AddForce(Vector2.left * PlayerSpeed * PlayerSprintSpeed);
                 PlayerCellingSpeed = PlayerCellingSprintSpeed;
+                this.gameObject.GetComponent<PlayerStatus>().IsRunning = true;
 
                 animator.SetBool("isRun", true);
                 return;
@@ -58,6 +59,7 @@ public class PlayerControl : MonoBehaviour
             {
                 PlayerCellingSpeed = savedCellingSpeed;
                 rb.velocity = new Vector2(-19f,rb.velocity.y);
+                this.gameObject.GetComponent<PlayerStatus>().IsRunning = false;
 
                 animator.SetBool("isRun", false);
                 return;
@@ -72,10 +74,15 @@ public class PlayerControl : MonoBehaviour
             this.gameObject.transform.localScale = new Vector3(-0.5f, this.gameObject.transform.localScale.y, this.gameObject.transform.localScale.z);
             interactButton.gameObject.transform.localScale = new Vector3(-19f, 19, 19f);
 
+            var stamina = this.gameObject.GetComponent<PlayerStatus>().stamina;
+
+            if(stamina <= 0) return;
+
             if(Input.GetKey(KeyCode.LeftShift))
             {
                 rb.AddForce(Vector2.right * PlayerSpeed * PlayerSprintSpeed);
                 PlayerCellingSpeed = PlayerCellingSprintSpeed;
+                this.gameObject.GetComponent<PlayerStatus>().IsRunning = true;
 
                 animator.SetBool("isRun", true);
                 return;
@@ -83,6 +90,7 @@ public class PlayerControl : MonoBehaviour
             {
                 PlayerCellingSpeed = savedCellingSpeed;
                 rb.velocity = new Vector2(19f,rb.velocity.y);
+                this.gameObject.GetComponent<PlayerStatus>().IsRunning = false;
 
                 animator.SetBool("isRun", false);
                 return;
@@ -98,6 +106,7 @@ public class PlayerControl : MonoBehaviour
     {
         rb.velocity = new Vector2(0f,rb.velocity.y);
         PlayerCellingSpeed = savedCellingSpeed;
+        this.gameObject.GetComponent<PlayerStatus>().IsRunning = false;
 
         animator.SetBool("isWalk", false);
         animator.SetBool("isRun", false);

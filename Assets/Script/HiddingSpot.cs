@@ -47,7 +47,7 @@ public class HiddingSpot : Interactable
     {
         player.GetComponent<SpriteRenderer>().enabled = true;
         player.GetComponent<Animator>().SetBool("isRun", false);
-        player.GetComponent<PlayerControl>().enabled = false;
+        player.GetComponent<PlayerControl>().enabled = true;
         player.GetComponent<Rigidbody2D>().velocity = new Vector2(0f,  player.GetComponent<Rigidbody2D>().velocity.y);
     }
 

@@ -25,7 +25,7 @@ public class Teleporter : Interactable
         fade.Play("Fade");
         player.GetComponent<Animator>().SetBool("isRun", false);
         player.GetComponent<PlayerControl>().enabled = false;
-        player.GetComponent<Rigidbody2D>().velocity = new Vector2(0f,  player.GetComponent<Rigidbody2D>().velocity.y);
+        player.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, player.GetComponent<Rigidbody2D>().velocity.y);
 
         Invoke("Teleport",0.5f);
     }

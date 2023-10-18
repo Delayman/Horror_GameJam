@@ -47,23 +47,37 @@ public class PlayerControl : MonoBehaviour
             this.gameObject.transform.localScale = new Vector3(0.5f, this.gameObject.transform.localScale.y, this.gameObject.transform.localScale.z);
             interactButton.gameObject.transform.localScale = new Vector3(19f, 19, 19f);
 
-            if(Input.GetKey(KeyCode.LeftShift))
-            {
-                rb.AddForce(Vector2.left * PlayerSpeed * PlayerSprintSpeed);
-                PlayerCellingSpeed = PlayerCellingSprintSpeed;
-                this.gameObject.GetComponent<PlayerStatus>().IsRunning = true;
+            var stamina = this.gameObject.GetComponent<PlayerStatus>().stamina;
 
-                animator.SetBool("isRun", true);
-                return;
+            if(stamina > 0)
+            {
+                if(Input.GetKey(KeyCode.LeftShift))
+                {
+                    rb.AddForce(Vector2.left * PlayerSpeed * PlayerSprintSpeed);
+                    PlayerCellingSpeed = PlayerCellingSprintSpeed;
+                    this.gameObject.GetComponent<PlayerStatus>().IsRunning = true;
+
+                    animator.SetBool("isRun", true);
+                    return;
+                }else
+                {
+                    PlayerCellingSpeed = savedCellingSpeed;
+                    rb.velocity = new Vector2(-19f,rb.velocity.y);
+                    this.gameObject.GetComponent<PlayerStatus>().IsRunning = false;
+
+                    animator.SetBool("isRun", false);
+                    return;
+                }
             }else
+            if(stamina <= 0)
             {
                 PlayerCellingSpeed = savedCellingSpeed;
-                rb.velocity = new Vector2(-19f,rb.velocity.y);
-                this.gameObject.GetComponent<PlayerStatus>().IsRunning = false;
+                    rb.velocity = new Vector2(-19f,rb.velocity.y);
+                    this.gameObject.GetComponent<PlayerStatus>().IsRunning = false;
 
-                animator.SetBool("isRun", false);
-                return;
-            }
+                    animator.SetBool("isRun", false);
+                    return;
+            } 
 
         }else
         if(Input.GetKey(KeyCode.D))
@@ -76,26 +90,35 @@ public class PlayerControl : MonoBehaviour
 
             var stamina = this.gameObject.GetComponent<PlayerStatus>().stamina;
 
-            if(stamina <= 0) return;
-
-            if(Input.GetKey(KeyCode.LeftShift))
+            if(stamina > 0)
             {
-                rb.AddForce(Vector2.right * PlayerSpeed * PlayerSprintSpeed);
-                PlayerCellingSpeed = PlayerCellingSprintSpeed;
-                this.gameObject.GetComponent<PlayerStatus>().IsRunning = true;
+                if(Input.GetKey(KeyCode.LeftShift))
+                {
+                    rb.AddForce(Vector2.right * PlayerSpeed * PlayerSprintSpeed);
+                    PlayerCellingSpeed = PlayerCellingSprintSpeed;
+                    this.gameObject.GetComponent<PlayerStatus>().IsRunning = true;
 
-                animator.SetBool("isRun", true);
-                return;
+                    animator.SetBool("isRun", true);
+                    return;
+                }else
+                {
+                    PlayerCellingSpeed = savedCellingSpeed;
+                    rb.velocity = new Vector2(19f,rb.velocity.y);
+                    this.gameObject.GetComponent<PlayerStatus>().IsRunning = false;
+
+                    animator.SetBool("isRun", false);
+                    return;
+                }
             }else
+            if(stamina <= 0)
             {
                 PlayerCellingSpeed = savedCellingSpeed;
-                rb.velocity = new Vector2(19f,rb.velocity.y);
-                this.gameObject.GetComponent<PlayerStatus>().IsRunning = false;
+                    rb.velocity = new Vector2(19f,rb.velocity.y);
+                    this.gameObject.GetComponent<PlayerStatus>().IsRunning = false;
 
-                animator.SetBool("isRun", false);
-                return;
-            }
-            
+                    animator.SetBool("isRun", false);
+                    return;
+            } 
         }else
         {
             StopPlayer();

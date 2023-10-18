@@ -24,6 +24,9 @@ public class PlayerStatus : MonoBehaviour
     public float stamina;
     private PlayerInteraction playerInteract;
 
+    //Sigleton
+    public static GameManager instance;
+
 
     private void Start() 
     {
@@ -62,7 +65,7 @@ public class PlayerStatus : MonoBehaviour
 
         if(sanity < 0)
         {
-            Debug.Log("i died lol");
+            GameManager.instance.IncreaseDeath(1);
             return;
         }
 

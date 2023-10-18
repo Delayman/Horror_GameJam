@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -44,6 +45,17 @@ public class GameManager : MonoBehaviour
     public void IncreaseDeath(int _count)
     {
         DeathCount += _count;
-        PlayerPrefs.SetInt("Death",DeathCount);
+        PlayerPrefs.SetInt("Death", DeathCount);
+        SceneManager.LoadScene("Death-Menu");
+    }
+
+    public void ResetDeathCount()
+    {
+        PlayerPrefs.SetInt("Death", 0);
+    }
+
+    public void ResetSoulShardCount()
+    {
+        PlayerPrefs.SetInt("SoulShard", 0);
     }
 }

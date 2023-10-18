@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Good-END.unity
     guid: 9aca657c5d24f8c4abba0c819fc0e237
+  - enabled: 1
+    path: Assets/Scenes/Death-Menu.unity
+    guid: 0590cdda5af35c045b23fb871472538f
   m_configObjects: {}

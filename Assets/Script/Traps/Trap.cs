@@ -24,7 +24,7 @@ public class Trap : MonoBehaviour
     
     IEnumerator DelayDamanged(Collider2D _col)
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
         
         if(isPlayerInArea)
         {

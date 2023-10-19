@@ -13,8 +13,8 @@ public class PlayerStatus : MonoBehaviour
 
     public Slider qteSlider;
 
-    public int sanityDrainRate;
-    private int savedSanityDrainLvl;
+    public float sanityDrainRate;
+    private float savedSanityDrainLvl;
 
     public bool IsbetweenQte;
     public bool IsRunning;
@@ -43,12 +43,12 @@ public class PlayerStatus : MonoBehaviour
 
         playerInteract = GetComponent<PlayerInteraction>();
 
-        var deathCount = GameManager.instance.GetDeath();
+        float deathCount = 2;
         
         if(deathCount > 0)
         {
-            savedSanityDrainLvl = deathCount;
-            sanityDrainRate = deathCount;
+            sanityDrainRate += deathCount/10;
+            savedSanityDrainLvl = sanityDrainRate;
         }
 
         if(savedSanityDrainLvl == 0) 

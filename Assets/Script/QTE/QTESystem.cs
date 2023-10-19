@@ -94,6 +94,7 @@ public class QTESystem : MonoBehaviour
     private void HideQTEKey()
     {
         player.GetComponent<PlayerStatus>().HideQTEButton();
+        player.GetComponent<PlayerControl>().StopPlayer();
         player.GetComponent<PlayerControl>().enabled = true;
     }
 

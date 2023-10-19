@@ -27,6 +27,10 @@ public class PlayerStatus : MonoBehaviour
     //Sigleton
     public static GameManager instance;
 
+    private void Awake() 
+    {
+        GameManager.instance.ResetSoulShardCount();
+    }
 
     private void Start() 
     {

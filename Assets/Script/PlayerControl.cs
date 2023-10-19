@@ -125,7 +125,7 @@ public class PlayerControl : MonoBehaviour
         }
     }
 
-    private void StopPlayer()
+    public void StopPlayer()
     {
         rb.velocity = new Vector2(0f,rb.velocity.y);
         PlayerCellingSpeed = savedCellingSpeed;

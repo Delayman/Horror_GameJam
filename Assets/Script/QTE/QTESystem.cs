@@ -76,6 +76,7 @@ public class QTESystem : MonoBehaviour
     private IEnumerator CountDownQTE()
     {
         var cdQteTime = UnityEngine.Random.Range(cdQteTimeMin, cdQteTimeMax);
+        player.GetComponent<PlayerControl>().StopPlayer();
         player.GetComponent<PlayerControl>().enabled = false;
         player.GetComponent<Rigidbody2D>().velocity = new Vector2(0f,  player.GetComponent<Rigidbody2D>().velocity.y);
 

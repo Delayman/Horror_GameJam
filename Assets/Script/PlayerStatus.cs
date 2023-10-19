@@ -43,6 +43,14 @@ public class PlayerStatus : MonoBehaviour
 
         playerInteract = GetComponent<PlayerInteraction>();
 
+        var deathCount = GameManager.instance.GetDeath();
+        
+        if(deathCount > 0)
+        {
+            savedSanityDrainLvl = deathCount;
+            sanityDrainRate = deathCount;
+        }
+
         if(savedSanityDrainLvl == 0) 
             savedSanityDrainLvl = sanityDrainRate;
     }

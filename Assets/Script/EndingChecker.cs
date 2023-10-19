@@ -21,10 +21,10 @@ public class EndingChecker : MonoBehaviour
 
     private void CalculateEnding()
     {
-        if(soulShardCount >= 7)
+        if(soulShardCount >= 3)
         {
             SceneManager.LoadScene("Bad-END");
-        }else if (soulShardCount < 7)
+        }else if (soulShardCount < 3)
         {
             SceneManager.LoadScene("Good-END");
         }

@@ -7,11 +7,11 @@ public class Intro : MonoBehaviour
 {
     private void Start() 
     {
-        Invoke("MainMenu",81f);
+        Invoke("LoadLevel",81f);
     }
 
-    public void MainMenu()
+    public void LoadLevel()
     {
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene("test");
     }
 }

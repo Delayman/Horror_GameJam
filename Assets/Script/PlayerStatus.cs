@@ -110,7 +110,7 @@ public class PlayerStatus : MonoBehaviour
 
     public void UseSanityBottle()
     {
-        sanity += 25f;
+        sanity += 40f;
 
         if(sanity > 100f)
             sanity = 100f;

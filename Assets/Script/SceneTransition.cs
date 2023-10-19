@@ -7,7 +7,7 @@ public class SceneTransition : MonoBehaviour
 {
     public void StartGame()
     {
-        SceneManager.LoadScene("test");
+        SceneManager.LoadScene("IntroCG");
     }
 
     public void MainMenu()

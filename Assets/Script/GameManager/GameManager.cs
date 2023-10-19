@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     public int SoulShardCount;
-    public int DeathCount;
+    public float DeathCount;
 
     private void Awake() 
     {
@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour
         return SoulShardCount;
     }
 
-    public int GetDeath()
+    public float GetDeath()
     {
         return DeathCount;
     }
@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour
     public void IncreaseDeath(int _count)
     {
         DeathCount += _count;
-        PlayerPrefs.SetInt("Death", DeathCount);
+        PlayerPrefs.SetFloat("Death", DeathCount);
         SceneManager.LoadScene("Death-Menu");
     }
 

@@ -43,11 +43,17 @@ public class PlayerStatus : MonoBehaviour
 
         playerInteract = GetComponent<PlayerInteraction>();
 
-        float deathCount = 2;
+        float deathCount =  GameManager.instance.GetDeath();
         
         if(deathCount > 0)
         {
             sanityDrainRate += deathCount/10;
+            savedSanityDrainLvl = sanityDrainRate;
+        }
+
+        if(deathCount >= 5)
+        {
+            sanityDrainRate = 1.5f;
             savedSanityDrainLvl = sanityDrainRate;
         }
 
